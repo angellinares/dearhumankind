@@ -1,0 +1,1 @@
+#Dear Human Kind - Notes
