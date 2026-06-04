@@ -1,0 +1,41 @@
+image: alpine:latest
+
+pages:
+  stage: deploy
+  script:
+    # Create the public directory (GitLab Pages requires output in /public)
+    - mkdir -p public/articles
+
+    # Copy site files
+    - cp index.html public/index.html
+
+    # Copy all markdown articles
+    - cp articles/*.md public/articles/ 2>/dev/null || true
+
+    # Generate manifest.json — array of article filenames, sorted
+    - |
+      cd public/articles
+      echo "[" > manifest.json
+      first=true
+      for f in $(ls *.md 2>/dev/null | sort); do
+        if [ "$first" = true ]; then
+          printf '  "%s"' "$f" >> manifest.json
+          first=false
+        else
+          printf ',\n  "%s"' "$f" >> manifest.json
+        fi
+      done
+      echo "" >> manifest.json
+      echo "]" >> manifest.json
+      cd ../..
+
+    - echo "Manifest generated:"
+    - cat public/articles/manifest.json
+
+  artifacts:
+    paths:
+      - public
+
+  # Deploy only from the default branch
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

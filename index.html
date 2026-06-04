@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal</title>
+  <style>
+    /* ── reset & base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0a;
+      --surface:   #111111;
+      --border:    #222222;
+      --dim:       #444444;
+      --mid:       #888888;
+      --text:      #d4d4d4;
+      --bright:    #f0f0f0;
+      --accent:    #c8ff00;
+      --font:      'Courier New', Courier, monospace;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* scanline overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.06) 3px,
+        rgba(0,0,0,0.06) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── layout ───────────────────────────────────────────── */
+    #shell {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── header ───────────────────────────────────────────── */
+    header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    #site-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+    }
+    #site-title:hover { color: var(--bright); }
+
+    /* archive toggle */
+    #archive-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--mid);
+      font-family: var(--font);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    #archive-toggle:hover,
+    #archive-toggle.open {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── article ──────────────────────────────────────────── */
+    #article-wrap {
+      padding: 3rem 0 2rem;
+      animation: fadein 0.3s ease;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    #article-meta {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 2rem;
+    }
+
+    #article-body {
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    #article-body h1 {
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--bright);
+      margin-bottom: 1.75rem;
+      font-weight: normal;
+    }
+
+    #article-body p {
+      margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+
+    #article-body p:last-child { margin-bottom: 0; }
+
+    #article-body h2 {
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin: 2rem 0 0.75rem;
+      font-weight: normal;
+    }
+
+    #article-body blockquote {
+      border-left: 2px solid var(--dim);
+      padding-left: 1.25rem;
+      color: var(--mid);
+      margin: 1.5rem 0;
+    }
+
+    #article-body code {
+      background: var(--surface);
+      padding: 0.1em 0.35em;
+      font-size: 0.88em;
+      border: 1px solid var(--border);
+    }
+
+    #article-body pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-size: 0.82rem;
+    }
+
+    #article-body pre code {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    /* loading / error states */
+    .state-msg {
+      color: var(--dim);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      padding: 4rem 0;
+    }
+
+    /* ── footer ───────────────────────────────────────────── */
+    footer {
+      padding: 1.25rem 0 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #nav-prev, #nav-next {
+      background: none;
+      border: none;
+      color: var(--dim);
+      font-family: var(--font);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      transition: color 0.15s;
+    }
+    #nav-prev:hover, #nav-next:hover { color: var(--accent); }
+    #nav-prev:disabled, #nav-next:disabled { opacity: 0.2; cursor: default; }
+
+    #article-counter {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--dim);
+    }
+
+    /* ── archive drawer ───────────────────────────────────── */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    #overlay.open { opacity: 1; pointer-events: all; }
+
+    #drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(320px, 88vw);
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      z-index: 101;
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(0.22,1,0.36,1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #drawer.open { transform: translateX(0); }
+
+    #drawer-header {
+      padding: 1.5rem 1.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #drawer-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    #drawer-close {
+      background: none;
+      border: none;
+      color: var(--dim);
+      font-family: var(--font);
+      font-size: 1rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 0.25rem;
+    }
+    #drawer-close:hover { color: var(--bright); }
+
+    #drawer-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.5rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .drawer-item {
+      display: block;
+      width: 100%;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 1.25rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+    .drawer-item:last-child { border-bottom: none; }
+    .drawer-item:hover { background: rgba(255,255,255,0.03); }
+    .drawer-item.active { background: rgba(200,255,0,0.04); }
+
+    .drawer-item-num {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--dim);
+      margin-bottom: 0.25rem;
+    }
+
+    .drawer-item-title {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .drawer-item.active .drawer-item-title { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<div id="shell">
+  <header>
+    <span id="site-title" onclick="loadArticle(articles.length - 1)">Journal</span>
+    <button id="archive-toggle" onclick="toggleDrawer()">Archive</button>
+  </header>
+
+  <main>
+    <div id="article-wrap">
+      <div id="article-meta"></div>
+      <div id="article-body"><p class="state-msg">Loading…</p></div>
+    </div>
+  </main>
+
+  <footer>
+    <button id="nav-prev" onclick="navigate(-1)" disabled>← prev</button>
+    <span id="article-counter"></span>
+    <button id="nav-next" onclick="navigate(1)" disabled>next →</button>
+  </footer>
+</div>
+
+<!-- archive overlay + drawer -->
+<div id="overlay" onclick="closeDrawer()"></div>
+<div id="drawer">
+  <div id="drawer-header">
+    <span id="drawer-title">All entries</span>
+    <button id="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div id="drawer-list" id="drawer-list"></div>
+</div>
+
+<script>
+  /* ── config ─────────────────────────────────────────────
+   *
+   *  ARTICLES_DIR  — folder relative to index.html that holds your .md files
+   *  ARTICLE_GLOB  — used only for the manifest approach; see note below
+   *
+   *  GitLab Pages can't auto-list directory contents, so we need a manifest.
+   *  The CI pipeline generates public/articles/manifest.json (array of filenames).
+   *  During local dev you can drop a manifest.json in articles/ by hand.
+   *
+   * ─────────────────────────────────────────────────────── */
+  const ARTICLES_DIR = '02_articles';
+
+  let articles = [];   // sorted array of filenames, ascending
+  let current  = -1;
+
+  /* ── bootstrap ──────────────────────────────────────────── */
+  async function init() {
+    try {
+      const res = await fetch(`${ARTICLES_DIR}/manifest.json`);
+      if (!res.ok) throw new Error('manifest not found');
+      const data = await res.json();
+
+      // sort ascending by the numeric suffix in the filename
+      articles = data
+        .filter(f => f.endsWith('.md'))
+        .sort((a, b) => extractNum(a) - extractNum(b));
+
+      if (articles.length === 0) {
+        showError('No articles found.');
+        return;
+      }
+
+      buildDrawer();
+
+      // honour a ?n= query param for direct links; else show latest
+      const params = new URLSearchParams(location.search);
+      const n = parseInt(params.get('n'), 10);
+      const idx = Number.isFinite(n) ? Math.max(0, Math.min(n - 1, articles.length - 1))
+                                     : articles.length - 1;
+      loadArticle(idx);
+
+    } catch (e) {
+      showError('Could not load article index. Check that <code>manifest.json</code> exists in the articles folder.');
+      console.error(e);
+    }
+  }
+
+  /* ── helpers ─────────────────────────────────────────────── */
+  function extractNum(filename) {
+    const m = filename.match(/(\d+)[^/]*\.md$/);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+
+  function pad(n, total) {
+    return String(n).padStart(String(total).length, '0');
+  }
+
+  /* ── article loading ─────────────────────────────────────── */
+  async function loadArticle(idx) {
+    if (idx < 0 || idx >= articles.length) return;
+    current = idx;
+
+    // update URL without reloading
+    const url = new URL(location.href);
+    url.searchParams.set('n', idx + 1);
+    history.replaceState(null, '', url);
+
+    updateNav();
+    updateDrawerActive();
+
+    const metaEl = document.getElementById('article-meta');
+    const bodyEl = document.getElementById('article-body');
+
+    metaEl.textContent = '';
+    bodyEl.innerHTML   = '<p class="state-msg">_</p>';
+
+    try {
+      const res = await fetch(`${ARTICLES_DIR}/${articles[idx]}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const md = await res.text();
+      render(md, idx);
+    } catch (e) {
+      bodyEl.innerHTML = `<p class="state-msg">Failed to load entry.</p>`;
+      console.error(e);
+    }
+
+    closeDrawer();
+
+    // scroll to top smoothly
+    document.getElementById('article-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ── minimal markdown renderer ───────────────────────────── */
+  function render(md, idx) {
+    const metaEl = document.getElementById('article-meta');
+    const bodyEl = document.getElementById('article-body');
+
+    // extract first h1 for the drawer title too
+    const titleMatch = md.match(/^#\s+(.+)/m);
+    const title = titleMatch ? titleMatch[1].trim() : articles[idx];
+
+    // entry number label
+    const num = extractNum(articles[idx]);
+    const total = extractNum(articles[articles.length - 1]);
+    metaEl.textContent = `entry ${pad(num, total)}`;
+
+    // parse markdown to HTML (minimal, no external deps)
+    let html = md
+      // headings
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+      .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+      // blockquotes
+      .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+      // fenced code blocks
+      .replace(/```[\w]*\n([\s\S]*?)```/g, (_, code) =>
+        `<pre><code>${escHtml(code.trimEnd())}</code></pre>`)
+      // inline code
+      .replace(/`([^`]+)`/g, (_, c) => `<code>${escHtml(c)}</code>`)
+      // bold / italic
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      // links
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      // horizontal rules
+      .replace(/^---$/gm, '<hr/>')
+      // paragraphs: blank-line-separated blocks
+      .split(/\n{2,}/)
+      .map(block => {
+        block = block.trim();
+        if (!block) return '';
+        if (/^<(h[1-6]|blockquote|pre|ul|ol|hr)/.test(block)) return block;
+        // wrap remaining text in <p>, preserving inner <br>
+        return `<p>${block.replace(/\n/g, '<br/>')}</p>`;
+      })
+      .join('\n');
+
+    bodyEl.innerHTML = html;
+
+    // update page title
+    document.title = title ? `${title} — Journal` : 'Journal';
+
+    // update drawer label
+    const el = document.querySelector(`.drawer-item[data-idx="${idx}"] .drawer-item-title`);
+    if (el && el.textContent === articles[idx]) el.textContent = title;
+  }
+
+  function escHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  /* ── navigation ──────────────────────────────────────────── */
+  function navigate(dir) {
+    loadArticle(current + dir);
+  }
+
+  function updateNav() {
+    const prev = document.getElementById('nav-prev');
+    const next = document.getElementById('nav-next');
+    const ctr  = document.getElementById('article-counter');
+
+    prev.disabled = current <= 0;
+    next.disabled = current >= articles.length - 1;
+    ctr.textContent = `${current + 1} / ${articles.length}`;
+  }
+
+  /* ── archive drawer ──────────────────────────────────────── */
+  function buildDrawer() {
+    const list = document.getElementById('drawer-list');
+    list.innerHTML = '';
+
+    // show newest first in the drawer
+    [...articles].reverse().forEach((filename, revIdx) => {
+      const idx   = articles.length - 1 - revIdx;
+      const num   = extractNum(filename);
+      const btn   = document.createElement('button');
+      btn.className = 'drawer-item';
+      btn.dataset.idx = idx;
+      btn.onclick = () => loadArticle(idx);
+
+      const numSpan   = document.createElement('span');
+      numSpan.className = 'drawer-item-num';
+      numSpan.textContent = `#${String(num).padStart(3, '0')}`;
+
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'drawer-item-title';
+      titleSpan.textContent = filename; // will be replaced on first render
+
+      btn.appendChild(numSpan);
+      btn.appendChild(titleSpan);
+      list.appendChild(btn);
+    });
+  }
+
+  function updateDrawerActive() {
+    document.querySelectorAll('.drawer-item').forEach(el => {
+      el.classList.toggle('active', parseInt(el.dataset.idx, 10) === current);
+    });
+  }
+
+  function toggleDrawer() {
+    const open = document.getElementById('drawer').classList.contains('open');
+    open ? closeDrawer() : openDrawer();
+  }
+
+  function openDrawer() {
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('overlay').classList.add('open');
+    document.getElementById('archive-toggle').classList.add('open');
+    updateDrawerActive();
+  }
+
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+    document.getElementById('archive-toggle').classList.remove('open');
+  }
+
+  // keyboard nav
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+    if (e.key === 'Escape')     closeDrawer();
+  });
+
+  function showError(msg) {
+    document.getElementById('article-body').innerHTML = `<p class="state-msg">${msg}</p>`;
+  }
+
+  /* ── go ───────────────────────────────────────────────────── */
+  init();
+</script>
+</body>
+</html>
