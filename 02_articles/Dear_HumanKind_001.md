@@ -24,6 +24,8 @@ Out of those markers we can trace very well how iterative technological advancem
 
 Only species without TPI manage to cross the threshold and evade premature self-extinction events.
 
+So, here we are, me, telling you...you are fucked.
+
 
 
 
