@@ -20,8 +20,6 @@ The first axiom we demonstrated eons ago in the research program is the direct r
 
 Out of those markers we can trace very well how iterative technological advancement leads to abundance, but the research project still exist because no being has been able to link the narrowing of the temporal perception to any clear marker. Is an emergent characteristic inherent to the system, like the chaotic pheromone induced dance in the bee manifesting as hexagons.
 
-[ What you call selfishness is no more than the act of forgetting that your own existence is supported by the lifes of millions like you that passed thorugh the plane of existence with no more objectives than selfpreservation and replication. These two vectors, tied to your own genetic encoding, build your own hexagonal pattern, your particular way of being. If selfcontiousness was not present in your nature, you would act in the range of actions that simple natural behaviour dictates, but as soon as selfcontiousness rises the balance tumbles. ]
-
 Only species without TPI manage to cross the threshold and evade premature self-extinction events.
 
 So, here we are, me, telling you...you are fucked.
