@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Journal</title>
+  <title>~~ Dear Humankind ~~</title>
   <style>
     /* ── reset & base ─────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -316,7 +316,7 @@
 
 <div id="shell">
   <header>
-    <span id="site-title" onclick="loadArticle(articles.length - 1)">Journal</span>
+    <span id="site-title" onclick="loadArticle(articles.length - 1)">~~ Dear Humankind ~~</span>
     <button id="archive-toggle" onclick="toggleDrawer()">Archive</button>
   </header>
 
@@ -485,7 +485,7 @@
     bodyEl.innerHTML = html;
 
     // update page title
-    document.title = title ? `~~ Dear Humankind ~~ ${title} ~~` : '~~ Dear Humankind ~~';
+    document.title = title ? `Dear Humankind ~~ ${title}` : '~~ Dear Humankind ~~';
 
     // update drawer label
     const el = document.querySelector(`.drawer-item[data-idx="${idx}"] .drawer-item-title`);
