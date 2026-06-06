@@ -1,0 +1,575 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"deg",
+				"degText"
+			],
+			[
+				"a",
+				"asin\tasin"
+			],
+			[
+				"setu",
+				"setup\tsetup"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "02_articles/Letter_001.md",
+			"settings":
+			{
+				"buffer_size": 4967,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "01_ideas/Idea_001.md",
+			"settings":
+			{
+				"buffer_size": 4953,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 21330,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "02_articles/manifest.json",
+			"settings":
+			{
+				"buffer_size": 22,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".gitlab-ci.yml",
+			"settings":
+			{
+				"buffer_size": 1002,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "01_ideas/Idea_002.md",
+			"settings":
+			{
+				"buffer_size": 3370,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					""
+				],
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					"Re-run sketch"
+				],
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					"Run sketch (Processing 3 only)"
+				],
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					"Run sketch fullscreen"
+				],
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					"Export sketch as application"
+				],
+				[
+					"Packages/Processing/Build Systems/Processing.sublime-build",
+					"Kill running sketches"
+				]
+			],
+			[
+				"Packages/Processing/Build Systems/Processing.sublime-build",
+				"Run sketch (Processing 3 only)"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Indexing Status"
+			],
+			[
+				"qui",
+				"QuickRulers: Open Panel"
+			],
+			[
+				"pytho",
+				"Build With: Python"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"package control",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 169.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/angel/00_Repos/07_US",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA",
+		"/C/Users/angel/00_Repos/07_US/01_TOOLS"
+	],
+	"file_history":
+	[
+		"/C/Users/angel/00_Repos/dearhumankind/02_articles/Dear_HumanKind_001.md",
+		"/C/Users/angel/00_Repos/dearhumankind/articles/manifest.json",
+		"/C/Users/angel/00_Repos/dearhumankind/01_ideas/Idea_002.mdown",
+		"/C/Users/angel/00_Repos/dearhumankind/01_ideas/Dear Human Kind - Notes.md",
+		"/C/Users/angel/Desktop/SeparateFiles InFolders.bat",
+		"/Z/004_APPS/Boole Optinest Pro 2.28f/yf0bd.OptiNest.Pro.2.28f/MSM/mesmerize.nfo",
+		"/C/Users/angel/00_Repos/08_MaxMSP/voids_algo.genjit",
+		"/C/Users/angel/Desktop/TEst/SeparateFiles InFolders_2.bat",
+		"/C/Users/angel/Desktop/SeparateFilesInFolders.bat",
+		"/C/Users/angel/Desktop/TEst/SeparateFilesInFolders.bat",
+		"/Z/004_APPS/001_MUSIC/Cycling.74.Max.v9.0.0.UNLOCKED-R2R/R2R.nfo",
+		"/Z/004_APPS/001_MUSIC/MiniMeters.v1.0.18.x64-BTCR/btcr.nfo",
+		"/C/Users/angel/00_Repos/07_US/01_TOOLS/01_SequenceProcessing.py",
+		"/C/Users/angel/00_Repos/07_US/ZZ_ProcessingUs/ZZ_ProcessingUs.pde",
+		"//RLNAS/music/By Author/Bill Withers/cd1/Bill Withers - The Ultimate Bill Withers Collection, CD1 (Complete Album).cue",
+		"//Rlnas/00-docs_angel/004_APPS/001_MUSIC/iZotope.RX.11.Audio.Editor.Advanced.v11.0.1.CE-V.R/iZotope.RX11.Advanced.v11.0.1.CE/VR.nfo",
+		"/C/Users/angel/Downloads/2022-02-15 172037.gpx",
+		"/C/Users/angel/Documents/ZZ_CODING/ZZ_Tests/01_GHFilesDeserialization/CircleTest.ghx",
+		"/D/Samples/._AkAi WAV.Dance Mega Drums 2",
+		"/D/trackerLog/log2.ptl",
+		"/C/Users/angel/Downloads/Native Instruments Guitar Rig 5 Pro v5.1.1 UNLOCKED - R2R [deepstatus]/iNF0/NFO.nfo",
+		"/C/Users/angel/Downloads/Native Instruments Guitar Rig 5 Pro v5.1.1 UNLOCKED - R2R [deepstatus]/iNF0/R2R.nfo",
+		"/C/Users/angel/Documents/ZZ_CODING/01_Repos/ettercap-0.8.3.1/INSTALL",
+		"/C/Users/angel/AppData/Local/qBittorrent/nova3/engines/jackett.json",
+		"/Z/00_PhotoArchive/2021/Takeout/Google Photos/RAW/PXL_20210417_033929097.dng.json",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/E/MISC/THM/100/DJI_0318.THM",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA/01_DOWNLOAD/Homo_sapiens.GRCh38.dna.chromosome.1_NoHeader",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA/00_SPLIT/Chromosome_1.fna",
+		"/C/Users/angel/Downloads/README",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA/00_SPLIT/Chromosome_21.fna",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA/00_SPLIT/Chromosome_1",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA/Chromosome_1",
+		"/C/Users/angel/00_Repos/07_US/Chromosome_1",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA/Chromosome_22",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA/Chromosome_3",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA/Chromosome_2",
+		"/C/Users/angel/00_Repos/07_US/00_REF_DATA/Chromosome_",
+		"/C/Users/angel/00_Repos/07_US/01_TOOLS/zz_PythonTest.py",
+		"/C/Users/angel/AppData/Roaming/Sublime Text 3/Packages/User/Python27.sublime-build",
+		"/C/Users/angel/Downloads/GRCh38_latest_genomic.fna",
+		"/C/Users/angel/00_Repos/07_US/US.sublime-project",
+		"/C/Users/angel/OneDrive/Documents/ZZ_CODING/01_ProcessingSketches/sketch_190818_001/sketch_190818_001.pde",
+		"/C/Users/angel/OneDrive/Documents/ZZ_CODING/01_ProcessingSketches/sketch_190814_001/sketch_190814_001.pde",
+		"/C/Users/angel/OneDrive/Documents/01_CREATE/00_IMAGING/190824_PhotogrametryTest/002/mesh.xyz",
+		"/C/Users/angel/00_Repos/00_Processing/build/build.xml",
+		"/C/Users/angel/00_Repos/00_Processing/app/build.xml",
+		"/C/Users/angel/AppData/Roaming/McNeel/Rhinoceros/5.0/Plug-ins/PythonPlugins/AR-MA {4dbb1598-76ef-4560-8b04-fd01de706e43}/dev/LoadARMACODE_cmd.py",
+		"/C/Users/angel/AppData/Roaming/McNeel/Rhinoceros/5.0/Plug-ins/PythonPlugins/AR-MA {4dbb1598-76ef-4560-8b04-fd01de706e43}/dev/AboutARMA_cmd.py",
+		"/C/Users/angel/00_Repos/01_Armacode/Python/armacode/_splashscreen.py",
+		"/C/Users/angel/00_Repos/01_Armacode/Python/armacode/armacode.ini",
+		"/C/Users/angel/OneDrive/Documentos/01_CREATE/00_IMAGING/00_GeneralNotes'.md"
+	],
+	"find":
+	{
+		"height": 44.0
+	},
+	"find_in_files":
+	{
+		"height": 87.2,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"stablishing",
+			"bast",
+			"journal",
+			"article",
+			"\"",
+			"TITLE",
+			"7b4aff62-8116-4d7e-93f8-50b91a38e5c8",
+			">"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "02_articles/Letter_001.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4967,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								64,
+								64
+							]
+						],
+						"settings":
+						{
+							"show_definitions": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "01_ideas/Idea_001.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4953,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								4953
+							]
+						],
+						"settings":
+						{
+							"show_definitions": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1186.4,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21330,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13233,
+								13233
+							]
+						],
+						"settings":
+						{
+							"show_definitions": true,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 10270.4,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "02_articles/manifest.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21,
+								21
+							]
+						],
+						"settings":
+						{
+							"show_definitions": true,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": ".gitlab-ci.yml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1002,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								184,
+								184
+							]
+						],
+						"settings":
+						{
+							"show_definitions": true,
+							"syntax": "Packages/YAML/YAML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "01_ideas/Idea_002.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3370,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"show_definitions": true,
+							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 51.2
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 130.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.markdown":
+	{
+		"height": 130.0
+	},
+	"pinned_build_system": "Packages/Processing/Build Systems/Processing.sublime-build",
+	"project": "dearhumankind.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 270.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,3 +1,5 @@
+# Letter 001
+
 Dear Humankind,
 
 If only you could contemplate yourself from here, just a tiny bright spot floating in the dark. A tiny bright spot tumbling around a bit bigger and hotter, but cosmically speaking diminutive, fusion reactor that inexorably consumes itself, with a very predictable and foreseeable end in the cosmically near future; in that event, it will drag you and all other bright spots floating on its vicinity to a majestic and beautiful finale (at least from our point of view). You call that bright spot Earth, for us is just the base of another study on self-conscious being development with chronical Temporal Perception Impairment or TPI, as we call it.

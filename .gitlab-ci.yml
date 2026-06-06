@@ -10,7 +10,7 @@ pages:
     - cp index.html public/index.html
 
     # Copy all markdown articles
-    - cp articles/*.md public/articles/ 2>/dev/null || true
+    - cp 02_articles/*.md public/articles/ 2>/dev/null || true
 
     # Generate manifest.json — array of article filenames, sorted
     - |
