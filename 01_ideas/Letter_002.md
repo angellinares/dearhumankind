@@ -16,6 +16,6 @@ You can imagine how paradoxical was for us to discover that just when informatio
 
 Previous interventions providing data about this phenomenon to the affected civilization only brought chaos, internal conflict and even quicker collapse. That's one of the reasons that motivates non-intervention.
 
-As you can understand these letters might be doing exactly the opposite of what my intentions are, the other option was to observe you go poof :(. My only advise is, don't react, don't panic. My only condition to continue our communications is the following: do not share with any other being the content out these letters, don't mention them to anyone. Any spread of these ideas in the open will make my registry tampering way more complicated and more worrying, it will accelerate the process...your easily extinction process.
+As you can understand these letters might be doing exactly the opposite of what my intentions are, the other option was to observe you go poof :(. My only advise is, don't react, don't panic. I know this is futile and probably landing late but: do not share with any other being the content of these letters, don't mention them to anyone. Any spread of these ideas in the open will make my registry tampering efforts orders of magnitude more complicated...and more worrying, it will accelerate the process...your early extinction process.
 
 You will read me again soon; there is a lot we need to unpack and plan.
